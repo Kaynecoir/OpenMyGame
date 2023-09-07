@@ -21,8 +21,23 @@ namespace App.Scripts.Scenes.SceneWordSearch.Features.Level.BuilderLevelModel
 
         private List<char> BuildListChars(List<string> words)
         {
-            //напиши реализацию не меняя сигнатуру функции
-            throw new NotImplementedException();
+            List<char> letters = new List<char>();
+            for (int i = 0; i < words.Count; i++)
+            {
+                List<char> addLetters = new List<char>();
+                for (int j = 0; j < words[i].Length; j++)
+                {
+                    if (letters.Contains(words[i][j]))
+                    {
+                        letters.Remove(words[i][j]);
+                    }
+                    addLetters.Add(words[i][j]);
+                }
+                letters.AddRange(addLetters);
+                addLetters.Clear();
+            }
+
+            return letters;
         }
     }
 }
