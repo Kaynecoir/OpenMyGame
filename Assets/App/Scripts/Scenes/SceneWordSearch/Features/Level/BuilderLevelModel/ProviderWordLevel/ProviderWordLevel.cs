@@ -8,7 +8,7 @@ namespace App.Scripts.Scenes.SceneWordSearch.Features.Level.BuilderLevelModel.Pr
     {
         public LevelInfo LoadLevelData(int levelIndex)
         {
-            string file_text = File.ReadAllText("Asset/App/Resources/Fillwords/" + levelIndex + ".json");
+            string file_text = File.ReadAllText("Assets\\App\\Resources\\WordSearch\\Levels\\" + levelIndex + ".json");
             LevelInfo li = new LevelInfo();
             li.words = new System.Collections.Generic.List<string>(GetStringFromJson(file_text));
             return li;

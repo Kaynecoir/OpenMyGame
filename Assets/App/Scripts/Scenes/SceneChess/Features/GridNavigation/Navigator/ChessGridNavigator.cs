@@ -10,7 +10,7 @@ namespace App.Scripts.Scenes.SceneChess.Features.GridNavigation.Navigator
     {
         public List<Vector2Int> FindPath(ChessUnitType unit, Vector2Int from, Vector2Int to, ChessGrid grid)
         {
-            List<Vector2Int> way = GetMinWay(unit, from, to, grid, null, 8);
+            List<Vector2Int> way = GetMinWay(unit, from, to, grid, null, 10);
             return way;
         }
 
@@ -79,6 +79,7 @@ namespace App.Scripts.Scenes.SceneChess.Features.GridNavigation.Navigator
 
             Func<Vector2Int, Vector2Int, ChessGrid, bool> AbleMove = (figureType) switch
             {
+                ChessUnitType.Pon => PawnAbleMove,  // I hope Pon it's Pawn
                 ChessUnitType.Rook => RookAbleMove,
                 ChessUnitType.Knight => KnightAbleMove,
                 ChessUnitType.Bishop => BishopAbleMove,
