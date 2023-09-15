@@ -13,7 +13,6 @@ namespace App.Scripts.Scenes.SceneFillwords.Features.ProviderLevel
         {
 			string path_instruct = "Assets\\App\\Resources\\Fillwords\\pack_0.txt";
 			string path_words = "Assets\\App\\Resources\\Fillwords\\words_list.txt";
-
 			List<(char, int)> char_list = GetCharInstr(path_instruct, path_words, index);
 
 			int size = Convert.ToInt32(Math.Sqrt(char_list.Count));
@@ -30,7 +29,7 @@ namespace App.Scripts.Scenes.SceneFillwords.Features.ProviderLevel
 		{
 			List<(char, int)> char_list = new List<(char, int)>();
 
-			string[] line = GetLine(path_instruct, index).Split();
+			string[] line = GetLine(path_instruct, index - 1).Split();
 			if(line != null)
 			{
 				for (int i = 0; i < line.Length; i += 2)
@@ -48,7 +47,7 @@ namespace App.Scripts.Scenes.SceneFillwords.Features.ProviderLevel
 					}
 					else
 					{
-						return GetCharInstr(path_instruct, path_words, index+1);
+						return GetCharInstr(path_instruct, path_words, ++index);
 					}
 				}
 			}
@@ -59,20 +58,23 @@ namespace App.Scripts.Scenes.SceneFillwords.Features.ProviderLevel
 
 			return char_list;
 		}
-		private string? GetLine(string path_to_file, int line)
+		private string GetLine(string path_to_file, int line)
 		{
+			if (line < 0) return null;
 			using (StreamReader reader_instruct = new StreamReader(path_to_file))
 			{
 				int yLine = 0;
-				string? words;
+				string words = null;
 				while ((words = reader_instruct.ReadLine()) != null)
 				{
+					UnityEngine.Debug.Log("line " + line);
 					if (yLine == line)
 					{
 						break;
 					}
 					yLine++;
 				}
+				reader_instruct.Close();
 				return words;
 			}
 		}

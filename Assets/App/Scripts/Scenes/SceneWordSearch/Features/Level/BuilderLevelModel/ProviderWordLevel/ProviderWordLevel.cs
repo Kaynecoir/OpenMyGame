@@ -10,7 +10,7 @@ namespace App.Scripts.Scenes.SceneWordSearch.Features.Level.BuilderLevelModel.Pr
         {
             string file_text = File.ReadAllText("Assets\\App\\Resources\\WordSearch\\Levels\\" + levelIndex + ".json");
             LevelInfo li = new LevelInfo();
-            li.words = new System.Collections.Generic.List<string>(GetStringFromJson(file_text));
+            li.words = GetStringFromJson(file_text);
             return li;
         }
         static System.Collections.Generic.List<string> GetStringFromJson(string line)
