@@ -13,6 +13,10 @@ namespace App.Scripts.Scenes.SceneFillwords.Features.ProviderLevel
         {
 			string path_instruct = "Assets\\App\\Resources\\Fillwords\\pack_0.txt";
 			string path_words = "Assets\\App\\Resources\\Fillwords\\words_list.txt";
+
+			// I do't know, why higher level ingame mode is 3, but code are working with level 4, 5, 6 or higher
+			// index = 10;
+
 			List<(char, int)> char_list = GetCharInstr(path_instruct, path_words, index);
 
 			int size = Convert.ToInt32(Math.Sqrt(char_list.Count));
