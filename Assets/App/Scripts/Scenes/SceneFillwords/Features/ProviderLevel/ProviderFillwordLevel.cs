@@ -7,15 +7,10 @@ namespace App.Scripts.Scenes.SceneFillwords.Features.ProviderLevel
 {
     public class ProviderFillwordLevel : IProviderFillwordLevel
     {
-        
-        
         public GridFillWords LoadModel(int index)
         {
 			string path_instruct = "Assets\\App\\Resources\\Fillwords\\pack_0.txt";
 			string path_words = "Assets\\App\\Resources\\Fillwords\\words_list.txt";
-
-			// I do't know, why higher level ingame mode is 3, but code are working with level 4, 5, 6 or higher
-			// index = 10;
 
 			List<(char, int)> char_list = GetCharInstr(path_instruct, path_words, index);
 
